@@ -1,0 +1,21 @@
+<div>
+  The name of the environment variable to extract the values from (e.g., 
+  MY_AXIS_LIST). Do not include qualifiers or variable access characters such 
+  as $ or ${}. At runtime the contents of this variable will be expanded to 
+  provide the axis values for this matrix build. 
+  <P>
+  An environment variable can be a Parameter, a Build Node variable, a 
+  globally-defined variable or a value from the operating system environment. 
+  Only the latter can actually be validated here because the rest are assigned 
+  at actual build time. If the specified variable cannot be found at build time 
+  the axis list will contain a single value of "default".
+  <P>
+  The rules for the value of this variable are the same as for the standard
+  <em>User-defined Axis</em> option: one or more values separated with a 
+  space (e.g., "dev tst sit", without the quotes).
+  <P>
+  Note that variable names are case-sensitive on some platforms. Also, names 
+  containing certain characters (such as periods) may be valid on one system 
+  but not another. For portability reasons it is recommended to specify names 
+  containing only alphanumeric and underscore characters only.
+</div>

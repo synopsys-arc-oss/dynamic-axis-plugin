@@ -1,0 +1,6 @@
+<!--
+  This view is used to render the installed plugins page.
+-->
+<div>
+  Define a matrix build axis with values dynamically populated at build time from an environment variable.
+</div>
