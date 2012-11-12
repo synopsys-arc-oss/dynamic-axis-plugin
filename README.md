@@ -38,5 +38,6 @@ environment variable selected for an axis:
 
 ## Acknowledgements
 
-Many thanks to Emanuele Zattin for leading the way with the Groovy Axis
-plugin.
+Many thanks to Emanuele Zattin, for leading the way with the Groovy Axis
+plugin. And of course to Koshuke, for continuing to improve this excellent
+platform. 

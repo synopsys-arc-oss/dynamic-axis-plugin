@@ -26,6 +26,7 @@ import com.google.common.collect.Lists;
 /**
  * Implements dynamic axis support through a configurable environment variable.
  * Warnings about type name colliding with a package in Eclipse can be ignored.
+ * @version 1.0.0
  */
 public class DynamicAxis extends Axis
 {
