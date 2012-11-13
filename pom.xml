@@ -76,9 +76,9 @@
 	</build>
 
 	<scm>
-		<url>https://github.com/jenkinsci/dynamic-axis-plugin</url>
-		<connection>scm:git:ssh://github.com/jenkinsci/dynamic-axis-plugin.git</connection>
-		<developerConnection>scm:git:ssh://kckane@github.com/jenkinsci/dynamic-axis-plugin.git</developerConnection>
+		<url>http://github.com/jenkinsci/dynamic-axis-plugin</url>
+		<connection>scm:git:git://github.com/jenkinsci/dynamic-axis-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:jenkinsci/dynamic-axis-plugin.git</developerConnection>
 	</scm>
 	
 	<url>https://wiki.jenkins-ci.org/display/JENKINS/DynamicAxis+Plugin</url>
