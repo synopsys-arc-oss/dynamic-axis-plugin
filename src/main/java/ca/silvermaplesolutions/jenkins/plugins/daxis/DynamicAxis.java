@@ -49,7 +49,7 @@ public class DynamicAxis extends Axis
 
 	/**
 	 * An accessor is required if referenced in the Jelly file.
-	 * @return
+	 * @return the name of the variable
 	 */
 	public synchronized String getVarName()
 	{
@@ -60,7 +60,7 @@ public class DynamicAxis extends Axis
 	 * Ensures the list has at least one default value. Jenkins doesn't seem to
 	 * like empty lists returned from getValues() or rebuild().
 	 */
-	private synchronized void checkForDefaultValues()
+	private void checkForDefaultValues()
 	{
 		if( axisValues.isEmpty() )
 		{
