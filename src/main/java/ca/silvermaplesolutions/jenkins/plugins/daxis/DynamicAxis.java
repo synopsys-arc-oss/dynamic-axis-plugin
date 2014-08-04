@@ -23,6 +23,7 @@ import org.kohsuke.stapler.StaplerRequest;
 
 import com.google.common.collect.Lists;
 import hudson.Util;
+import java.util.ArrayList;
 
 /**
  * Implements dynamic axis support through a configurable environment variable.
@@ -132,7 +133,8 @@ public class DynamicAxis extends Axis
 		// validate result list before returning it
 		checkForDefaultValues();
 		LOGGER.fine( "Returning axis list " + axisValues );
-		return axisValues;
+		// must return a new object because axisValues might change
+                return new ArrayList<String>(axisValues);
 	}
 
 	/**
