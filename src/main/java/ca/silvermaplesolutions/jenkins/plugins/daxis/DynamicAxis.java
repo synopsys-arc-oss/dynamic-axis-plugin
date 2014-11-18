@@ -22,6 +22,7 @@ import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
 import com.google.common.collect.Lists;
+import hudson.Util;
 
 /**
  * Implements dynamic axis support through a configurable environment variable.
@@ -115,7 +116,7 @@ public class DynamicAxis extends Axis
 					if( varValue != null )
 					{
 						LOGGER.fine( "Variable value is '" + varValue + "'" );
-						for( String item : varValue.split( " " ) )
+						for( String item : Util.tokenize(varValue) )
 						{
 							axisValues.add( item );
 						}
