@@ -11,6 +11,7 @@ import hudson.matrix.MatrixBuild;
 import hudson.model.TaskListener;
 import hudson.util.FormValidation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -132,7 +133,8 @@ public class DynamicAxis extends Axis
 		// validate result list before returning it
 		checkForDefaultValues();
 		LOGGER.fine( "Returning axis list " + axisValues );
-		return axisValues;
+        // must return a new object because axisValues might change
+		return new ArrayList<String>(axisValues);
 	}
 
 	/**
