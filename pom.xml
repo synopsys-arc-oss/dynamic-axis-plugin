@@ -8,7 +8,7 @@
 
 	<artifactId>dynamic-axis</artifactId>
 	<name>Dynamic Axis</name>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<packaging>hpi</packaging>
 
 	<developers>
