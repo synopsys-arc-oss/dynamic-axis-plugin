@@ -24,6 +24,7 @@ import org.kohsuke.stapler.StaplerRequest;
 
 import com.google.common.collect.Lists;
 import hudson.Util;
+import java.util.Arrays;
 import java.util.logging.Level;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -100,7 +101,7 @@ public class DynamicAxis extends Axis
 	{
 		return getVarName();
 	}
-
+	
 	/**
 	 * Override the new rebuild() feature to dynamically evaluate the configured
 	 * environment variable name to get list of axis values to use for the
@@ -109,35 +110,27 @@ public class DynamicAxis extends Axis
 	 * @return New list of axis values
 	 */
 	@Override
-	public synchronized @Nonnull List<String> rebuild( @CheckForNull MatrixBuild.MatrixBuildExecution context )
+	public synchronized @Nonnull List<String> rebuild( @Nonnull MatrixBuild.MatrixBuildExecution context )
 	{
 		// clear any existing values to ensure we do not return old ones
 		LOGGER.log( Level.FINE, "Rebuilding axis names from variable ''{0}''", varName);
 		final List<String> newAxisValues = new ArrayList<String>(axisValues.size()); 
-		if( context != null )
+		try
 		{
-			try
+			// attempt to get the current environment variables
+			final @Nonnull EnvVars vars = context.getBuild().getEnvironment( TaskListener.NULL );
+			
+			// only spaces are supported as separators, as per the original axis value definition
+			String varValue = vars.get( varName );
+			if( varValue != null )
 			{
-				// attempt to get the current environment variables
-				EnvVars vars = context.getBuild().getEnvironment( TaskListener.NULL );
-				if( vars != null )
-				{
-					// only spaces are supported as separators, as per the original axis value definition
-					String varValue = vars.get( varName );
-					if( varValue != null )
-					{
-						LOGGER.log( Level.FINE, "Variable value is ''{0}''", varValue);
-						for( String item : Util.tokenize(varValue) )
-						{
-							newAxisValues.add( item );
-						}
-					}
-				}
+				LOGGER.log( Level.FINE, "Variable value is ''{0}''", varValue);
+				newAxisValues.addAll(Arrays.asList(Util.tokenize(varValue)));
 			}
-			catch( Exception e )
-			{
-				LOGGER.severe( "Failed to build list of names: " + e );
-			}
+		}
+		catch( Exception e )
+		{
+			LOGGER.log( Level.SEVERE, "Failed to build list of names: {0}", e);
 		}
 
 		// validate result list before returning it
